@@ -1,4 +1,4 @@
-{% set version = "0.15.80" %}
+{% set version = "0.15.100" %}
 {% set cross = False %}
 {% if build_platform != target_platform and not build_platform.startswith('win') %}
 {% set cross = True %}
@@ -9,7 +9,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/r/ruamel.yaml/ruamel.yaml-{{ version }}.tar.gz
-  sha256: 4f203351575dba0829c7b1e5d376d08cf5f58e4a2b844e8ce552b3e41cd414e6
+  sha256: 8e42f3067a59e819935a2926e247170ed93c8f0b2ab64526f888e026854db2e4
 
 build:
   number: 0
@@ -38,8 +38,6 @@ requirements:
 test:
   requires:
     - pip
-    - pytest
-
   imports:
     - ruamel_yaml
     - ruamel_yaml.ext._ruamel_yaml
@@ -48,9 +46,10 @@ test:
     - if pip show ruamel.yaml; then exit 1; fi  # [unix]
     - $PYTHON -m pip install ruamel.yaml  # [unix]
     - $PYTHON -c "import ruamel.yaml"  # [unix]
+    - pip check
 
 about:
-  home: https://bitbucket.org/ruamel/yaml
+  home: https://sourceforge.net/p/ruamel-yaml/code/ci/default/tree
   license: MIT
   license_family: MIT
   license_file: LICENSE
